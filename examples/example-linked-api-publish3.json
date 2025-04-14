@@ -1,0 +1,42 @@
+{
+    "displayName": "Linked API example publish 3",
+    "description": "This is an example of a valid schema of a linked API that will be set to auto publish.",
+    "overview": "This message will be presented to the users in the FaUAPI consumption portal",
+    "schemaUrl": "https://raw.githubusercontent.com/JimGregory-Advania/fauapi-ingestion-test/refs/heads/main/json-schemas/linked-apis/exampleSchemas/linked-schema-simple.json",
+    "schemaType": "openapi",
+    "backendType": "http",
+    "majorVersion": "v1",
+    "visibility": "Internal",
+    "tags": "example;publish;api;",
+    "classification": "Across government services",
+    "serviceLevel": "24/7",
+    "technology": "REST, C#",
+    "usage": "Government parties can use it",
+    "environments": [
+        {
+            "name": "dev",
+            "baseUrl" : "https://valid-base-url2.co.uk",
+            "visibility" : "Internal"
+        },
+        {
+            "name": "staging",
+            "baseUrl" : "https://valid-base-url1.co.uk",
+            "visibility" : "Inherit"
+        },
+        {
+            "name": "live",
+            "baseUrl" : "https://valid-base-url5.co.uk",
+            "visibility" : "Inherit"
+        }
+    ],
+    "releases" : [
+        {
+            "isCurrent" : true,
+            "name": "1.0",
+            "tag": "Live",
+            "availableFrom": "2024-11-08",
+            "notes": "Current release of this api." 
+         }
+    ]
+
+}

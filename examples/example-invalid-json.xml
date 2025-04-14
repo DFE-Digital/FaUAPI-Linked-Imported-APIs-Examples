@@ -1,0 +1,6 @@
+<fail>
+    <to>DEV</to>
+    <from>repo</from>
+    <heading>Fail</heading>
+    <body>Invalid json testing</body>
+</fail>

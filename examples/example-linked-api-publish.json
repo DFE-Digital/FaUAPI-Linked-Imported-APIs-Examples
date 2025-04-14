@@ -1,0 +1,57 @@
+{
+    "displayName": "Linked API example publish",
+    "description": "This is an example of a valid schema of a linked API that will be set to auto publish.\r\nIt has multiline markdown content, which allows things like:\r\n-bullet points\r\n- Links [This is a link](https://github.com/JimGregory-Advania/fauapi-ingestion-test/edit/main/json-schemas/linked-apis/examples/example-linked-api-publish.json)",
+    "overview": "This message will be presented to the users in the FaUAPI consumption portal",
+    "schemaUrl": "https://raw.githubusercontent.com/JimGregory-Advania/fauapi-ingestion-test/refs/heads/main/json-schemas/linked-apis/exampleSchemas/linked-schema-simple.json",
+    "schemaType": "openapi",
+    "backendType": "http",
+    "majorVersion": "v1",
+    "visibility": "Internal",
+    "tags": "example;publish;api;",
+    "classification": "Across government services",
+    "serviceLevel": "24/7",
+    "technology": "REST, C#",
+    "usage": "Government parties can use it",
+    "environments": [
+      {
+          "name": "dev",
+          "baseUrl" : "https://valid-base-url.co.uk",
+          "visibility" : "Inherit",
+          "enabled":false
+      },
+      {
+          "name": "staging",
+          "baseUrl" : "https://valid-base-url.co.uk",
+          "visibility" : "Inherit"
+      },
+      {
+          "name": "live",
+          "baseUrl" : "https://valid-base-url.co.uk",
+          "visibility" : "Private",
+          "enabled" : true
+      }
+   ],
+    "releases" : [
+        {
+           "isCurrent" : false,
+           "name": "1.0",
+           "tag": "Deprecated",
+           "notes": "Current release of this api. (Deprecated)" 
+        },
+        {
+            "isCurrent" : true,
+            "name": "1.0",
+            "tag": "Live",
+            "availableFrom": "2024-11-08",
+            "notes": "Current release of this api." 
+         },
+         {
+            "isCurrent" : false,
+            "name": "1.0",
+            "tag": "Planned",
+            "availableFrom": "2024-11-08",
+            "notes": "Current release of this api. (Planned)" 
+         }
+    ]
+
+}

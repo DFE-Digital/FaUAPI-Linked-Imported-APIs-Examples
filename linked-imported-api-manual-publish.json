@@ -1,0 +1,209 @@
+{
+	"$schema": "https://json-schema.org/draft/2020-12/schema",
+	"title": "Manual-publish imported linked API",
+	"type": "object",
+	"properties": {
+		"displayName": {
+			"description": "Please enter a friendly display name for this API",
+			"type": "string",
+			"maxLength": 100,
+			"minLength": 3
+		},
+		"description": {
+			"description": "Please enter a brief description of the purpose of this API. This information will be searchable by API consumers and presented as part of search results",
+			"type": "string",
+			"minLength": 40
+		},
+		"overview": {
+			"description": "This will be visible to API consumers",
+			"type": "string"
+		},
+		"schemaUrl": {
+			"description": "Link to the destination of the schema of this API",
+			"type": [ "string", "null" ],
+			"format": "uri"
+		},
+		"schemaType": {
+			"description": "Specify the schema type",
+			"type": [ "string", "null" ],
+			"enum": [
+				"openapi",
+				"openapi+json",
+				"wsdl",
+				"swagger",
+				null
+			]
+		},
+		"backendType": {
+			"description": "Allowed values - http, soap, graphql",
+			"type": "string",
+			"enum": [
+				"http",
+				"soap",
+				"graphql"
+			]
+		},
+		"majorVersion": {
+			"description": "Please enter the major version identifier for this API",
+			"type": "string",
+			"maxLength": 50,
+			"minLength": 1,
+			"pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+		},
+		"visibility": {
+			"description": "Allowed values are 'Public', 'Internal', 'Private'",
+			"type": "string",
+			"enum": [
+				"Public",
+				"Internal",
+				"Private"
+			]
+		},
+		"tags": {
+			"description": "Semi-colon delimited set of tags for search",
+			"type": "string",
+			"pattern": "^([a-zA-Z0-9]+;)+$"
+		},
+		"classification": {
+			"description": "Data exposure classification",
+			"type": "string",
+			"enum": [
+				"Public facing",
+				"Across government services",
+				"Across departmental services",
+				"Within service boundary"
+			]
+		},
+		"serviceLevel": {
+			"type": "string"
+		},
+		"technology": {
+			"type": "string"
+		},
+		"usage": {
+			"description": "Describe who can use this API",
+			"type": "string"
+		},
+		"environments": {
+			"description": "An array of environments",
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"name": {
+						"type": "string",
+						"description": "Only the names 'live', 'staging, and 'dev are allowed'",
+						"enum": [
+							"live",
+							"staging",
+							"dev"
+						]
+					},
+					"baseUrl": {
+						"type": "string",
+						"format": "uri"
+					},
+					"visibility": {
+						"description": "These options are limited to the maximum visibility of the API",
+						"type": "string",
+						"enum": [
+							"Inherit",
+							"Private",
+							"Public",
+							"Internal"
+						]
+					},
+					"enabled": {
+						"type": "boolean"
+					}
+				}
+			},
+			"minItems": 0,
+			"maxItems": 3
+		},
+		"releases": {
+			"type": [ "array", "null" ],
+			"items": {
+				"type": "object",
+				"properties": {
+					"isCurrent": {
+						"type": "boolean"
+					},
+					"name": {
+						"type": "string",
+						"description": "The name of the release"
+					},
+					"tag": {
+						"type": "string",
+						"enum": [
+							"Live",
+							"Alpha",
+							"Beta",
+							"Planned",
+							"Deprecated"
+						]
+					},
+					"availableFrom": {
+						"type": "string",
+						"format": "date"
+					},
+					"availableTo": {
+						"type": "string",
+						"format": "date"
+					},
+					"notes": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"isCurrent",
+					"name",
+					"tag"
+				],
+				"allOf": [
+					{
+						"if": {
+							"properties": { "isCurrent": { "const": true } }
+						},
+						"then": {
+							"required": [ "availableFrom" ]
+						},
+						"contains": {
+							"properties": {
+								"isCurrent": {
+									"const": true
+								}
+							},
+							"maxContains": 1
+						}
+					}
+				]
+			}
+		}
+	},
+	"required": [
+		"displayName",
+		"description",
+		"backendType",
+		"majorVersion",
+		"environments"
+	],
+	"allOf": [
+		{
+			"properties": {
+				"environments": {
+					"type": "array",
+					"uniqueItems": true,
+					"items": {
+						"type": "object",
+						"properties": {
+							"name": {
+								"type": "string"
+							}
+						}
+					}
+				}
+			}
+		}
+	]
+}
