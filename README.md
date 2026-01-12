@@ -6,6 +6,7 @@
     -  `backendType` - There are three available options - `http` (rest) ,`soap`, and `graphql`. If a different option is given, the specification will fail on validation.
     -  `majorVersion` - This value must not exceed the 50 character limit, e.g. 'v1'.
     -  `environments` - They are not required for this scenario, therefore the object is left empty.
+    - `siteUrl` - This value can be must not exceed 200 characters 
 
 2. **Draft Linked Api + Metadata and Environments** \
       [Example](/json-schemas/linked-apis/examples/example-linked-api-draft-with-metadata.json) \
