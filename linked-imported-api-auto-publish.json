@@ -83,6 +83,11 @@
 			"description": "Describe who can use this API",
 			"type": "string"
 		},
+		"siteUrl": {
+			"description": "The URL of the API's site, which provides additional information and documentation about the API.",
+			"type": "string",
+			"format": "uri"
+		},
 		"environments": {
 			"description": "an array of environments",
 			"type": "array",

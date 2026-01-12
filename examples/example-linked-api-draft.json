@@ -3,5 +3,6 @@
     "description": "This is an example of a valid schema of a linked API that will be set to draft",
     "backendType": "http",
     "majorVersion": "1",
-    "environments": []
+    "environments": [],
+    "siteUrl": "https://valid-site-url.co.uk"
 }

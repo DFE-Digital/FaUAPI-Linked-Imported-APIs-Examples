@@ -12,6 +12,7 @@
     "serviceLevel": "24/7",
     "technology": "REST, C#",
     "usage": "Government parties can use it",
+    "siteUrl": "https://valid-site-url.co.uk",
     "environments": [
       {
           "name": "dev",
